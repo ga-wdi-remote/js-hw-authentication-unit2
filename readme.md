@@ -43,10 +43,12 @@ So far we have a User Model that only has `email` and `password_digest`. Add at 
   2. **Sign Up Form** We have to make sure the user signs up with this new information. The only extra thing we'll want them to sign up with is their `username`. We don't need them to sign up their `list` because they will be adding list items _after_ they sign up. In `views/users/signup.hbs`, add another `div` with an `input` for the `username`.
 
   <details><summary>Answer: </summary>
+  ```
   <div>
     <label for="username">username</label>
     <input type="text" name="username">
   </div>
+  ```
   </details>
 
   - 🎯 Git add, and commit -m "updated signup form"
@@ -54,11 +56,13 @@ So far we have a User Model that only has `email` and `password_digest`. Add at 
   3. **Post Route** Finally, we have to fix our post route that creates the `User` object to include the new property so that it saves it in the database. In `controllers/users.js`'s `router.post('/')`, update `var user` to include the `username` property.
 
   <details><summary>Answer: </summary>
+  ```
   var user = new User({
     username: req.body.username,
     email: req.body.email,
     password_digest: res.hashedPassword
   });
+  ```
   </details>
 
   - 🎯 Git add, and commit -m "updated User post route"
