@@ -1,0 +1,42 @@
+<h1>{{users.username}}'s Summer Bucket List</h1>
+
+{{#if currentUser}}
+<form action="/users/{{users._id}}/lists/" method="post">
+  <input type="text" name="name" placeholder="This summer I want to...">
+  <input type="hidden" name="complete" value="false"><br>
+  <input type="submit" value="Add it to My List">
+</form>
+{{/if}}
+
+
+{{#each users.list}}
+
+  {{#if complete}}
+  {{else}}
+  <ul>
+    <li>
+      {{this.name}}
+      {{#if ../currentUser}}
+      <form action="/users/{{../users._id}}/lists/{{this._id}}/done?_method=PUT" method="POST">
+          <input type="hidden" name="name" value="{{this.name}}">
+  				<input type="submit" value="did it">
+  		</form>
+      <a href="/users/{{../users._id}}/lists/{{this._id}}/edit">edit</a>
+      {{/if}}
+    </li>
+  </ul>
+  {{/if}}
+
+{{/each}}
+
+<h2>Completed Bucket List Items:</h2>
+{{#each users.list}}
+
+  {{#if complete}}
+  <ul>
+    <li>
+    {{this.name}}
+    </li>
+  </ul>
+  {{/if}}
+{{/each}}

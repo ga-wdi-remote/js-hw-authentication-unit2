@@ -1,0 +1,10 @@
+<h2>Edit this Item</h2>
+
+<form action="/users/{{user._id}}/lists/{{list._id}}?_method=PUT" method="POST">
+  <input type="text" name="name" placeholder="{{list.name}}"><br>
+  <input type="submit" value="Update">
+</form>
+
+<form method='POST' action='/users/{{user._id}}/lists/{{list._id}}?_method=DELETE'>
+  <input type='submit' value='Delete Item'/>
+</form>
