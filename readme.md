@@ -38,7 +38,8 @@ So far we have a User Model that only has `email` and `password_digest`. Add at 
     updated_at: Date
   });
   ```
-  - 🎯 Git add, and commit -m "updated user schema"
+    - 🎯 Git add, and commit -m "updated user schema"
+
 
   2. **Sign Up Form** We have to make sure the user signs up with this new information. The only extra thing we'll want them to sign up with is their `username`. We don't need them to sign up their `list` because they will be adding list items _after_ they sign up. In `views/users/signup.hbs`, add another `div` with an `input` for the `username`.
 
@@ -51,7 +52,8 @@ So far we have a User Model that only has `email` and `password_digest`. Add at 
   ```
   </details>
 
-  - 🎯 Git add, and commit -m "updated signup form"
+    - 🎯 Git add, and commit -m "updated signup form"
+    
 
   3. **Post Route** Finally, we have to fix our post route that creates the `User` object to include the new property so that it saves it in the database. In `controllers/users.js`'s `router.post('/')`, update `var user` to include the `username` property.
 
@@ -65,7 +67,7 @@ So far we have a User Model that only has `email` and `password_digest`. Add at 
   ```
   </details>
 
-  - 🎯 Git add, and commit -m "updated User post route"
+    - 🎯 Git add, and commit -m "updated User post route"
 
   4. Check your work! Run `nodemon` and on `localhost:4000/users` try signing up as a new user with a username. You can also double check the user in the `mongo` shell directly and see `username` is now part of the User model.
 
